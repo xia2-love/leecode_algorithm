@@ -1,4 +1,3 @@
-# leecode_algorithm
 # 力扣知识点总结
 
 力扣题型总共分为以下几个部分：
@@ -19,17 +18,17 @@
 
 题解方法：
 
-1、双指针、双索引滑动窗口
+### 1、双指针、双索引滑动窗口
 
-双指针法（快慢指针法）： 通过一个快指针和慢指针在一个for循环下完成两个for循环的工作。
-
-双指针用法：两个快慢指针从初始位置出发，两个快慢指针分别从初始、结束位置出发。
-
-适用题目：（1）明显针对双指针的问题，（2）可以将三维问题降为二维问题求解，
-
-进阶：多指针可以用来标记多个边界问题
-
-使用：易与哈希表结合使用，使用双指针的时候要找到维护的条件
+>双指针法（快慢指针法）： 通过一个快指针和慢指针在一个for循环下完成两个for循环的工作。
+>
+>双指针用法：两个快慢指针从初始位置出发，两个快慢指针分别从初始、结束位置出发。
+>
+>适用题目：（1）明显针对双指针的问题，（2）可以将三维问题降为二维问题求解，
+>
+>进阶：多指针可以用来标记多个边界问题
+>
+>使用：易与哈希表结合使用，使用双指针的时候要找到维护的条件
 
 **总结**
 
@@ -39,18 +38,17 @@
 - 有些题目难以找到左边界右移的条件，例如 LC.76，需要**两层思考**：窗口是否满足要求以及如何判断
 - 有些题目需要两个指针一个在左端，一个在右端，然后两个指针向中点移动。
 
-2、基数排序法
+### 2、基数排序法
 
-3、三路快速排序法，二分法（两路查找）、线性查找
+### 3、三路快速排序法，二分法（两路查找）、线性查找
 
-三路快速排序是双路快速排序的进一步改进，三路排序算法把排序的数据分为三部分，分别为小于 v，等于 v，大于 v，v 为标定值，这样三部分的数据中，等于 v 的数据在下次递归中不再需要排序，小于 v 和大于 v 的数据也不会出现某一个特别多的情况），通过此方式三路快速排序算法的性能更优。
+(1)三路快速排序是双路快速排序的进一步改进，三路排序算法把排序的数据分为三部分，分别为小于 v，等于 v，大于 v，v 为标定值，这样三部分的数据中，等于 v 的数据在下次递归中不再需要排序，小于 v 和大于 v 的数据也不会出现某一个特别多的情况），通过此方式三路快速排序算法的性能更优。
 
-二分法主要解决问题为：查询时间变为O(logN)
+(2)二分法主要解决问题为：查询时间变为O(logn)
 
 **左闭右开**：搜索区间范围是 `[left, right)`，此时循环条件是`left < right`
 
 参考代码：
-
 ```cpp
 int searchInsert(vector<int>& nums, int target) {
     int len=nums.size();
@@ -93,11 +91,12 @@ int searchInsert(vector<int>& nums, int target) {
 > 有的题目是套用模板法，有的题目则是没有所谓的「左闭右开」「左闭右闭」的概念，重点是认真理解题意，根据题目的条件分析如何缩减区间，参考题目：[liweiwei](https://leetcode.cn/problems/search-insert-position/solution/te-bie-hao-yong-de-er-fen-cha-fa-fa-mo-ban-python-/)
 
 
-线性查找：查找时间为O(n),for循环遍历一遍查找
+(3)线性查找：查找时间为O(n),for循环遍历一遍查找
 
-4、堆排序（优先队列），时间复杂度为O(nlogn)
+### 4、堆排序（优先队列），时间复杂度为O(nlogn)
 
-堆：
+(1)堆：
+
 首先堆中插入元素就是末尾插入，然后调整堆；堆中取元素一般就是取首元素，然后也是调整堆
 
 ```cpp
@@ -140,24 +139,24 @@ void heapSort(vector<int> &nums) {
 ```
 
 
-优先队列的使用：
+(2)优先队列的使用：
 
-***大顶堆与小顶堆***
+**大顶堆与小顶堆**
 > 大顶堆（降序）(默认是大根堆)
 > priority_queue<int,vector<int>,less<int> > big_heap2;
 > 小顶堆（升序）
 > priority_queue<int,vector<int>,greater<int> > small_heap;
 
-***注意事项***
+**注意事项**
 如果使用less和greater，需要头文件：
 #include <functional>
 > push()函数插入元素
 > pop()函数从队列中删除元素时，优先级最高的元素将首先被删除。
 > top()	此函数用于寻址优先队列的最顶层元素。
 
-5、数组序号计数
+### 5、数组序号计数
 
-6、快速排序
+### 6、快速排序
 平均时间复杂度：O(nlogn) 最坏时间复杂度O(n^2)
 
 代码参考：
@@ -183,12 +182,13 @@ void quickSort(int arr[], int left, int right) {
 }
 ```
 
-7、桶排序
+### 7、桶排序
 
-8、模拟。注意点：边界条件以及处理重复子问题
+### 8、模拟。注意点：边界条件以及处理重复子问题
+
 一般会处理限制条件进行剪枝，或者要记录是否到过某个位置，会结合bfs和dfs或者回溯+剪枝一起考。
 
-9、回溯法
+### 9、回溯法
 适用题目：穷举所有类型，进阶：回溯+剪枝
 
 子集型回溯
@@ -245,13 +245,14 @@ void quickSort(int arr[], int left, int right) {
 - 参考[代码随想录](https://programmercarl.com/0047.%E5%85%A8%E6%8E%92%E5%88%97II.html)：注意 LC.47 中如果有重复元素需要使用 `used[i-1] == false` 来限制同一层重复元素，说明 i-1 是之前「被恢复的」元素，已经使用过了，所以剪掉
 
 
-10、动态规划法
+### 10、动态规划法
 > 重点：思考状态转移
+
 > 思路：暴力求解，从暴力求解中寻求数组和递推关系中存放所有情况
 
-11、最大前缀和
+### 11、最大前缀和
 
-12、自定义排序
+### 12、自定义排序(找准自定义排序的条件)
 
 参考代码：
 ```cpp
@@ -272,26 +273,28 @@ public:
 ![sort](https://pic.leetcode-cn.com/1629483637-tmENTT-Picture2.png)
 
 ## 二、链表
-'''‘’‘
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
- '''
+```cpp
+
+  //Definition for singly-linked list.
+  struct ListNode {
+      int val;
+      ListNode *next;
+      ListNode() : val(0), next(nullptr) {}
+      ListNode(int x) : val(x), next(nullptr) {}
+      ListNode(int x, ListNode *next) : val(x), next(next) {}
+  };
+```
  
 学会建链表、头插法、尾插法、用指针标记位置、双指针
 
-## 三、哈希表
-> map存放key-value数对，注意key不能变，value可以改变。使用的时候要注意是否需要存放重复的健，以及是否需要排序。（set中key和value一致）
+## 三、哈希表(多用于贪心算法和需要利用空间降低时间复杂度的问题)
+> map存放key-value数对，注意key不能变，value可以改变。
+>
+>使用的时候要注意是否需要存放重复的健，以及是否需要排序。（set中key和value一致）
+>
 > 如果是需要重复扫描定位，可以利用map存储，降低时间，提高代码的简洁性
 
-## 四、字符串
+## 四、字符串（常用到字符串转整数、整数转字符串的问题）
 1、模拟对字符串的使用
 
 2、使用动态规划求解
@@ -303,20 +306,116 @@ public:
 多结合：递归法、bfs和dfs+剪枝+回溯求解
 
 ```cpp
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
- '''
-1、二叉树：四种遍历；二叉搜索树
-2、多叉树
+
+  //Definition for a binary tree node.
+  struct TreeNode {
+      int val;
+      TreeNode *left;
+      TreeNode *right;
+      TreeNode() : val(0), left(nullptr), right(nullptr) {}
+      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  };
+ ```
+
+### 1、二叉树：四种遍历；二叉搜索树（利用左<根<右的思想解题）
+
+1. 前序遍历，遍历方式是：**根-左-右**
+
+递归方式：
+
+   ```cpp
+   vector<int> res;
+   
+   void dfs(TreeNode* root) {
+       if (!root) {
+           return;
+       }
+       res.push_back(root->val);
+       dfs(root->left);
+       dfs(root->right);
+   }
+   ```
+2. 中序遍历，遍历方式是：**左-根-右**
+
+递归方式：
+
+   ```cpp
+   vector<int> res;
+   
+   void dfs(TreeNode* root) {
+       if (!root) {
+           return;
+       }
+       dfs(root->left);
+       res.push_back(root->val);
+       dfs(root->right);
+   }
+   ```
+3. 后序遍历，遍历方式：**左-右-根**
+
+递归方式：
+
+   ```cpp
+   vector<int> res;
+   
+   void dfs(TreeNode* root) {
+       if (!root) {
+           return;
+       }
+       dfs(root->left);
+       dfs(root->right);
+       res.push_back(root->val);
+   }
+   ```
+
+4. 层序遍历
+
+层序遍历是一种广度优先搜索，**使用队列（先进先出）实现**，前面深度优先搜索主要使用栈实现。
+
+具体步骤为：
+
+- 初始化队列 q，并将根节点 root 加入到队列中；
+- 当队列不为空时：
+  - 队列中弹出节点 node，加入到结果中；
+  - 如果左子树非空，左子树加入队列；
+  - 如果右子树非空，右子树加入队列；
+
+```cpp
+vector<vector<int>> levelOrder(TreeNode* root) {
+    vector<vector<int>> res;
+    queue<TreeNode *> q;
+
+    if(root) q.push(root);
+
+    while(!q.empty()) {
+        // 注意这里要先保存一下队列长度，因为之后节点入队时长度会变
+        int size = q.size();
+        vector<int> level;
+        for(int i = 0; i < size; i ++) {
+            TreeNode* node = q.front();
+            q.pop();
+            level.push_back(node->val);
+            if (node->left) {
+                q.push(node->left);
+            }
+            if (node->right) {
+                q.push(node->right);
+            }
+        }
+
+        res.push_back(level);
+        level.clear();
+    }
+    return res;
+
+}
+```
+
+5. 总结
+
+- 三种常见的遍历方式：前序、中序、后序遍历递归一定要掌握。万变不离其宗。
+
 
 ## 七、回溯
 技巧：注意用函数书写重复代码
@@ -365,16 +464,12 @@ public:
 实现：
 1、初始化所有节点的祖先是自己。
 
-2、查找当前边的两个节点的祖先是否相同.
-
-如果不同，则联合这两个节点；
-
-如果相同，则找到，中断退出。
+2、查找当前边的两个节点的祖先是否相同。如果不同，则联合这两个节点；如果相同，则找到，中断退出。
 
 适用场景：确认是否有共同祖先，不必知道每一个祖先是谁。
 
 参考代码：
-   ```cpp
+```cpp
 class Solution {
 public:
     //查询
@@ -411,6 +506,14 @@ public:
 ## 十二、状态压缩
 状态总数少。能用异或等符号穷举所有从1-n的情况。
 
+## 十三、搜索算法（bfs，dfs）
+
+dfs：尽可能深的搜索树的分支
+
+bfs：横向优先搜索，一般使用 队列 实现
+
+总结：
+-考察点一般为记忆化dfs，已经访问过的位置需要标记。
 
 # 思考总结：
 1、正向思考和反向思考
